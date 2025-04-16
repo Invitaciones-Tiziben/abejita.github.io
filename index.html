@@ -7,6 +7,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
     }
 
     .invitacion-container {
@@ -14,7 +15,6 @@
       width: 100%;
       height: 0;
       padding-top: 370.3704%;
-      padding-bottom: 0;
       box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
       margin-top: 0em;
       margin-bottom: 0.9em;
@@ -36,7 +36,7 @@
 
     .botones-flotantes {
       position: fixed;
-      bottom: 75px; /* Subido 40px más */
+      bottom: 75px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -72,6 +72,47 @@
       object-fit: cover;
       border-radius: 40%;
     }
+
+    /* Contenedor emergente */
+    .contenedor-info {
+      display: none;
+      position: fixed;
+      top: 5%;
+      left: 5%;
+      width: 90%;
+      height: 90%;
+      background: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border-radius: 12px;
+      z-index: 20000;
+      overflow: hidden;
+    }
+
+    .contenedor-info iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Botón cerrar */
+    .boton-cerrar {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff4d4d;
+      border: none;
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 20001;
+    }
+
+    .boton-cerrar:hover {
+      background-color: #ff1a1a;
+    }
   </style>
 </head>
 <body>
@@ -98,10 +139,30 @@
     </a>
 
     <!-- Botón Info -->
-    <a href="https://sites.google.com/view/tizibenabejita/sugerencias-de-regalos" class="boton-flotante" title="Más info">
+    <div class="boton-flotante" title="Más info" onclick="mostrarInfo()">
       <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3h3ZXVwaWVsMmRlcXZva2hmMzA1NW14anl6dHVqMGdnYW9pNXN5dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Y0sXcPq031L31dWDIi/giphy.gif" alt="Info">
-    </a>
+    </div>
   </div>
+
+  <!-- Contenedor de información adicional -->
+  <div id="infoEmergente" class="contenedor-info">
+    <button class="boton-cerrar" onclick="cerrarInfo()">×</button>
+    <iframe loading="lazy" 
+            src="https://www.canva.com/design/DAGkodTU99M/uTkAAckeYwE-Nr5Ibl4skg/view?embed" 
+            allowfullscreen="allowfullscreen" 
+            allow="fullscreen">
+    </iframe>
+  </div>
+
+  <script>
+    function mostrarInfo() {
+      document.getElementById('infoEmergente').style.display = 'block';
+    }
+
+    function cerrarInfo() {
+      document.getElementById('infoEmergente').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
